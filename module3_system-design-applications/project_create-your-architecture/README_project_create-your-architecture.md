@@ -42,3 +42,4 @@ Serverless design: Developers divide the application into functions, such as pro
 ### Suitability for various application types
 The traditional design is a good fit for long-running applications that rely on relational data, need control over the runtime, or use an existing server-based codebase. The serverless design is a good fit for variable traffic, event-driven tasks, and applications that can be divided into independent APIs or functions. For this e-commerce application, serverless can be a practical starting point if the data and API needs fit DynamoDB and order tasks can run asynchronously. The traditional design may be a better fit if the application needs complex relational transactions or greater control over its runtime. A hybrid approach—such as a serverless frontend with a relational database or containerized application tier—is also an option.
 
+
