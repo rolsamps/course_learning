@@ -1,4 +1,4 @@
-# Module 3 Project: Designing an E-Commerce Application Architecture
+# Designing an E-Commerce Application Architecture
 
 ## Part 1: Traditional Server Scaling Design
 This project designs an e-commerce web application starting with using a traditional three-tier architecture — a web layer, an application layer, and a data layer. Customers browse products, manage accounts and carts, and place orders through the web layer.
@@ -41,5 +41,4 @@ Traditional design: Developers use familiar web and application servers, framewo
 Serverless design: Developers divide the application into functions, such as product browsing, cart updates, and order processing. Initial deployment involves configuring functions, API routes, permissions, and supporting services, often with infrastructure-as-code. Functions can be deployed independently, but teams still need to manage testing, configuration, monitoring, retries, and rollbacks.
 ### Suitability for various application types
 The traditional design is a good fit for long-running applications that rely on relational data, need control over the runtime, or use an existing server-based codebase. The serverless design is a good fit for variable traffic, event-driven tasks, and applications that can be divided into independent APIs or functions. For this e-commerce application, serverless can be a practical starting point if the data and API needs fit DynamoDB and order tasks can run asynchronously. The traditional design may be a better fit if the application needs complex relational transactions or greater control over its runtime. A hybrid approach—such as a serverless frontend with a relational database or containerized application tier—is also an option.
-
 
