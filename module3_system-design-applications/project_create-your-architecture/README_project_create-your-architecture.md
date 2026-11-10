@@ -4,7 +4,7 @@
 This project designs an e-commerce web application starting with using a traditional three-tier architecture — a web layer, an application layer, and a data layer. Customers browse products, manage accounts and carts, and place orders through the web layer.
 The application layer handles business logic — authentication, inventory checks, order management, and payment requests. The data layer stores structured records in Amazon RDS and static assets in Amazon S3. EC2 instances run both the web and application tiers, with Multi-AZ deployment, Elastic Load Balancing, and Auto Scaling for availability and horizontal scaling. CloudFront sits in front to cache and deliver static content faster.
 The architecture is shown below:
-<img width="3179" height="1637" alt="project_create-traditional-architecture" src="https://github.com/user-attachments/assets/7d6079cb-0951-48b2-9f9e-8c27b374b20e" />
+<img width="4950" height="1930" alt="project_create-traditional-architecture" src="https://github.com/user-attachments/assets/fe78a167-5155-424a-bea5-e94266fd3cd4" />
 
 ### Scaling strategy
 A separate scaling policy and capacity should be defined for each web and application tier. Both tiers should have minimum, desired, and maximum capacity. As a starting point, it is good to have at least two healthy instances per Availability Zone for each tier. Scale horizontally by adding or removing instances as needed. The web tier can use target tracking with metrics such as ALB request count per target and CPU utilization. For an application tier that processes synchronous requests, scaling can be based on CPU utilization or custom metrics such as active requests or concurrency per instance.
@@ -17,7 +17,7 @@ The load balancer is the public entry point, and customer traffic uses HTTPS. Th
 This design uses the same e-commerce application with a serverless architecture. The frontend is hosted in an S3 bucket and delivered through CloudFront. API Gateway routes incoming requests to AWS Lambda functions, which handle product browsing, account management, cart updates, order processing, and payment coordination.
 Lambda functions use IAM roles to access Amazon DynamoDB for application data and a separate S3 bucket for assets. EventBridge publishes events that trigger a secondary Lambda for async tasks like order notifications and post-purchase processing. There are no servers to manage; each service scales automatically with demand.
 The architecture is shown below:
-<img width="2042" height="1761" alt="project_create-serverless-architecture" src="https://github.com/user-attachments/assets/e0e1a8d0-542e-4fe4-96ee-dda1c6754cc1" />
+<img width="2042" height="1761" alt="project_create-serverless-architecture" src="https://github.com/user-attachments/assets/583616ab-84ed-4a03-90d6-52b994585c1f" />
 
 ### Scaling strategy
 API Gateway throttling and Lambda concurrency are separate controls. API Gateway acts as the front door, and Lambda acts as the worker; both services scale separately.
